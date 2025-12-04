@@ -1,0 +1,306 @@
+{
+  "version": "1.0",
+  "veteranName": "John Martinez",
+  "checklist": {
+    "medical": {
+      "label": "Medical Records",
+      "items": [
+        { "id": "m1", "text": "Request complete service treatment records (STRs)", "checked": true },
+        { "id": "m2", "text": "Obtain VA medical center records", "checked": true },
+        { "id": "m3", "text": "Get private medical records", "checked": true },
+        { "id": "m4", "text": "Request mental health records", "checked": true },
+        { "id": "m5", "text": "Obtain pharmacy/medication records", "checked": false },
+        { "id": "m6", "text": "Get imaging/radiology reports", "checked": true },
+        { "id": "m7", "text": "Request lab work results", "checked": false }
+      ]
+    },
+    "service": {
+      "label": "Service Documents",
+      "items": [
+        { "id": "s1", "text": "DD-214 (Member Copy 4)", "checked": true },
+        { "id": "s2", "text": "Personnel records", "checked": true },
+        { "id": "s3", "text": "Awards and decorations", "checked": true },
+        { "id": "s4", "text": "Performance evaluations", "checked": true },
+        { "id": "s5", "text": "Deployment orders/records", "checked": true },
+        { "id": "s6", "text": "Line of Duty (LOD) determinations", "checked": true },
+        { "id": "s7", "text": "Article 15s or disciplinary records", "checked": false }
+      ]
+    },
+    "evidence": {
+      "label": "Supporting Evidence",
+      "items": [
+        { "id": "e1", "text": "Buddy statements from fellow service members", "checked": true },
+        { "id": "e2", "text": "Personal statement (VA Form 21-4138)", "checked": true },
+        { "id": "e3", "text": "Spouse/family statements", "checked": true },
+        { "id": "e4", "text": "Photos of injuries/conditions", "checked": false },
+        { "id": "e5", "text": "Medical nexus letters", "checked": true },
+        { "id": "e6", "text": "Independent Medical Opinions (IMOs)", "checked": true },
+        { "id": "e7", "text": "Disability Benefits Questionnaires (DBQs)", "checked": true }
+      ]
+    },
+    "forms": {
+      "label": "VA Forms",
+      "items": [
+        { "id": "f1", "text": "VA Form 21-526EZ (Application for Disability)", "checked": true },
+        { "id": "f2", "text": "VA Form 21-4142 (Medical Release)", "checked": true },
+        { "id": "f3", "text": "VA Form 21-0781 (PTSD Statement)", "checked": true },
+        { "id": "f4", "text": "VA Form 21-8940 (TDIU Application)", "checked": false },
+        { "id": "f5", "text": "Intent to File submitted", "checked": true }
+      ]
+    },
+    "appointments": {
+      "label": "Appointments & Exams",
+      "items": [
+        { "id": "a1", "text": "Schedule C&P exam", "checked": true },
+        { "id": "a2", "text": "Prepare for C&P exam questions", "checked": true },
+        { "id": "a3", "text": "VSO consultation scheduled", "checked": true },
+        { "id": "a4", "text": "Follow-up appointments documented", "checked": true }
+      ]
+    }
+  },
+  "conditions": [
+    {
+      "id": 1701234567890,
+      "name": "Lumbar Degenerative Disc Disease",
+      "category": "chronic",
+      "severity": "severe",
+      "estimatedRating": 40,
+      "evidence": "Service treatment records show multiple sick call visits for lower back pain starting 2008. MRI dated 03/2022 confirms L4-L5 and L5-S1 disc herniation with nerve impingement. Physical therapy records from 2019-2023. Buddy statement from SSG Williams confirming injury during deployment. Current treatment includes pain management and steroid injections every 3 months.",
+      "inServiceProof": "LOD determination dated 06/15/2009 for back injury during convoy operations in Iraq. STRs show 14 documented visits for back pain 2008-2012. Profile limiting lifting to 25lbs issued 2010.",
+      "dbqAvailable": true,
+      "nexusNeeded": false,
+      "notes": "Strong claim - direct service connection with clear documentation. Consider secondary claims for radiculopathy."
+    },
+    {
+      "id": 1701234567891,
+      "name": "PTSD with Major Depressive Disorder",
+      "category": "mental",
+      "severity": "severe",
+      "estimatedRating": 70,
+      "evidence": "Combat deployment to Iraq 2008-2009, Afghanistan 2011. Witnessed IED attacks and lost 3 squad members. VA mental health records show ongoing treatment since 2013. Currently prescribed Sertraline 100mg and Prazosin for nightmares. Attends weekly group therapy. GAF score of 45 documented in 2023 evaluation.",
+      "inServiceProof": "Combat Action Badge awarded. After Action Reports document traumatic events. VA Form 21-0781 completed with stressor verification. Service records confirm deployment dates and unit assignment.",
+      "dbqAvailable": true,
+      "nexusNeeded": false,
+      "notes": "Verified combat stressors. Strong occupational and social impairment documented. Sleep disturbance, hypervigilance, and avoidance behaviors well-documented."
+    },
+    {
+      "id": 1701234567892,
+      "name": "Bilateral Tinnitus",
+      "category": "hearing",
+      "severity": "moderate",
+      "estimatedRating": 10,
+      "evidence": "Constant ringing in both ears since 2009. MOS was 11B Infantry - extensive weapons exposure without adequate hearing protection. Audiogram shows high-frequency hearing loss consistent with noise exposure. Buddy statement from platoon member confirming weapons training and combat noise exposure.",
+      "inServiceProof": "MOS 11B confirmed on DD-214. Weapons qualification records. Deployment to combat zone with documented firefights.",
+      "dbqAvailable": true,
+      "nexusNeeded": false,
+      "notes": "Presumptive for combat veterans. Maximum rating for tinnitus is 10%."
+    },
+    {
+      "id": 1701234567893,
+      "name": "Left Knee Patellofemoral Syndrome",
+      "category": "physical",
+      "severity": "moderate",
+      "estimatedRating": 20,
+      "evidence": "Chronic left knee pain and instability. X-rays show early arthritis and cartilage wear. Physical therapy records from 2020-2023. Uses knee brace for prolonged standing/walking. Range of motion limited to 90 degrees flexion.",
+      "inServiceProof": "STRs document knee injury during airborne operations 2010. Profile issued for running. Multiple sick call visits for knee pain during service.",
+      "dbqAvailable": true,
+      "nexusNeeded": false,
+      "notes": "Document limitation of flexion and instability separately for potential separate ratings."
+    },
+    {
+      "id": 1701234567894,
+      "name": "Obstructive Sleep Apnea",
+      "category": "sleep",
+      "severity": "moderate",
+      "estimatedRating": 50,
+      "evidence": "Diagnosed via sleep study 2021 - AHI of 22 events/hour. Prescribed CPAP machine, uses nightly. Weight gain and fatigue documented. Spouse statement regarding loud snoring and breathing interruptions observed since 2012.",
+      "inServiceProof": "Buddy statements noting snoring during deployment. Weight records show gain during service. Seeking nexus letter to connect to service or secondary to PTSD medications.",
+      "dbqAvailable": true,
+      "nexusNeeded": true,
+      "notes": "Consider secondary connection to PTSD (weight gain from medications) or direct connection based on in-service symptoms."
+    },
+    {
+      "id": 1701234567895,
+      "name": "Right Shoulder Rotator Cuff Tear",
+      "category": "physical",
+      "severity": "moderate",
+      "estimatedRating": 20,
+      "evidence": "MRI confirms partial thickness tear of supraspinatus tendon. Limited range of motion - cannot raise arm above shoulder level. Compensating causes neck and upper back pain. Cortisone injections provide temporary relief.",
+      "inServiceProof": "Injury documented during combatives training 2011. Physical therapy referral in service. Continued complaints at separation physical.",
+      "dbqAvailable": true,
+      "nexusNeeded": false,
+      "notes": "Document painful motion and functional loss. Consider secondary claim for cervical strain."
+    }
+  ],
+  "ratings": [
+    { "id": 1701234567890, "name": "Lumbar Degenerative Disc Disease", "rating": 40 },
+    { "id": 1701234567891, "name": "PTSD with Major Depressive Disorder", "rating": 70 },
+    { "id": 1701234567892, "name": "Bilateral Tinnitus", "rating": 10 },
+    { "id": 1701234567893, "name": "Left Knee Patellofemoral Syndrome", "rating": 20 },
+    { "id": 1701234567894, "name": "Obstructive Sleep Apnea", "rating": 50 },
+    { "id": 1701234567895, "name": "Right Shoulder Rotator Cuff Tear", "rating": 20 }
+  ],
+  "medicalEntries": [
+    {
+      "id": 1701234560001,
+      "date": "2023-11-15",
+      "issue": "Lower back pain - routine follow-up",
+      "diagnosis": "Lumbar DDD with radiculopathy",
+      "treatment": "Continued pain management, steroid injection scheduled",
+      "dutyImpact": "Unable to lift over 10lbs, limited standing/walking",
+      "docSource": "Clinical Note",
+      "followUp": "Return in 3 months, MRI ordered",
+      "notes": "Patient reports pain level 6/10. Radiating to left leg. Dr. Sarah Chen, Pain Management at VA Medical Center.",
+      "severity": "moderate",
+      "bodySystem": "musculoskeletal",
+      "linkedChain": "",
+      "isRecurrence": true,
+      "hasGap": false
+    },
+    {
+      "id": 1701234560002,
+      "date": "2023-11-08",
+      "issue": "PTSD therapy session",
+      "diagnosis": "PTSD, chronic",
+      "treatment": "CPT therapy, medication management",
+      "dutyImpact": "Occupational impairment - difficulty with crowds, hypervigilance",
+      "docSource": "Mental Health Note",
+      "followUp": "Weekly therapy sessions continuing",
+      "notes": "Nightmares 4-5x per week. Increased Prazosin to 3mg. Discussed avoidance behaviors. Dr. Michael Roberts, Psychiatry.",
+      "severity": "severe",
+      "bodySystem": "mental",
+      "linkedChain": "",
+      "isRecurrence": true,
+      "hasGap": false
+    },
+    {
+      "id": 1701234560003,
+      "date": "2023-10-20",
+      "issue": "Lumbar epidural steroid injection",
+      "diagnosis": "Lumbar radiculopathy",
+      "treatment": "L4-L5 epidural injection performed",
+      "dutyImpact": "Limited mobility for 48 hours post-procedure",
+      "docSource": "Clinical Note",
+      "followUp": "Evaluate relief in 2-3 weeks",
+      "notes": "Third injection this year. Moderate relief expected 2-3 weeks. Dr. James Wilson, Interventional Pain.",
+      "severity": "moderate",
+      "bodySystem": "musculoskeletal",
+      "linkedChain": "",
+      "isRecurrence": true,
+      "hasGap": false
+    },
+    {
+      "id": 1701234560004,
+      "date": "2023-09-15",
+      "issue": "Sleep study follow-up",
+      "diagnosis": "Obstructive Sleep Apnea",
+      "treatment": "CPAP compliance review, pressure adjustment",
+      "dutyImpact": "Chronic fatigue affecting daily function",
+      "docSource": "Clinical Note",
+      "followUp": "Return in 6 months",
+      "notes": "CPAP compliance at 78%. Adjusted pressure settings. Weight stable. Dr. Lisa Park, Sleep Medicine.",
+      "severity": "moderate",
+      "bodySystem": "sleep",
+      "linkedChain": "",
+      "isRecurrence": true,
+      "hasGap": false
+    },
+    {
+      "id": 1701234560005,
+      "date": "2023-08-22",
+      "issue": "Left knee pain and instability",
+      "diagnosis": "Patellofemoral syndrome with early OA",
+      "treatment": "Physical therapy referral, knee brace issued",
+      "dutyImpact": "Cannot run or climb stairs without pain",
+      "docSource": "Specialist Referral",
+      "followUp": "PT for 6 weeks, then re-evaluate",
+      "notes": "ROM 0-90 degrees. Crepitus present. X-ray shows joint space narrowing. Dr. Robert Kim, Orthopedics.",
+      "severity": "moderate",
+      "bodySystem": "musculoskeletal",
+      "linkedChain": "",
+      "isRecurrence": true,
+      "hasGap": false
+    },
+    {
+      "id": 1701234560006,
+      "date": "2023-07-10",
+      "issue": "Acute anxiety attack",
+      "diagnosis": "PTSD exacerbation",
+      "treatment": "Lorazepam 0.5mg, crisis counseling",
+      "dutyImpact": "Unable to work for 2 days following episode",
+      "docSource": "Emergency Room Record",
+      "followUp": "Follow up with psychiatry within 1 week",
+      "notes": "Triggered by fireworks. Hyperventilation, tachycardia. Stabilized and released from VA Medical Center ER.",
+      "severity": "severe",
+      "bodySystem": "mental",
+      "linkedChain": "",
+      "isRecurrence": true,
+      "hasGap": false
+    },
+    {
+      "id": 1701234560007,
+      "date": "2023-06-05",
+      "issue": "Shoulder pain and weakness",
+      "diagnosis": "Rotator cuff partial tear",
+      "treatment": "Cortisone injection, PT continuation",
+      "dutyImpact": "Cannot lift arm above shoulder level",
+      "docSource": "Specialist Referral",
+      "followUp": "Discuss surgery if no improvement in 3 months",
+      "notes": "Cannot lift arm above shoulder. Surgery discussed as option if no improvement. Dr. Robert Kim, Orthopedics.",
+      "severity": "moderate",
+      "bodySystem": "musculoskeletal",
+      "linkedChain": "",
+      "isRecurrence": true,
+      "hasGap": false
+    },
+    {
+      "id": 1701234560008,
+      "date": "2023-05-15",
+      "issue": "Audiology evaluation",
+      "diagnosis": "Bilateral sensorineural hearing loss with tinnitus",
+      "treatment": "Hearing aids recommended",
+      "dutyImpact": "Difficulty hearing in meetings, phone conversations",
+      "docSource": "Clinical Note",
+      "followUp": "Hearing aid fitting appointment scheduled",
+      "notes": "High frequency loss 4000-8000Hz bilateral. Constant tinnitus reported. Dr. Amanda Foster, Audiology.",
+      "severity": "moderate",
+      "bodySystem": "hearing",
+      "linkedChain": "",
+      "isRecurrence": false,
+      "hasGap": false
+    },
+    {
+      "id": 1701234560009,
+      "date": "2009-03-22",
+      "issue": "Lower back injury - convoy IED blast",
+      "diagnosis": "Acute lumbar strain",
+      "treatment": "Bed rest, muscle relaxants, profile issued",
+      "dutyImpact": "Non-deployable for 30 days, no lifting over 10lbs",
+      "docSource": "Memorandum/LOD",
+      "followUp": "Re-evaluate in 2 weeks",
+      "notes": "LOD initiated. Vehicle struck by IED. Thrown against interior. Medevac to CSH. Combat Medic / FOB Warrior, Iraq.",
+      "severity": "severe",
+      "bodySystem": "musculoskeletal",
+      "linkedChain": "",
+      "isRecurrence": false,
+      "hasGap": false
+    },
+    {
+      "id": 1701234560010,
+      "date": "2009-06-15",
+      "issue": "Post-deployment mental health screening",
+      "diagnosis": "Adjustment disorder, rule out PTSD",
+      "treatment": "Counseling referral",
+      "dutyImpact": "Recommend limited stress duties",
+      "docSource": "Mental Health Note",
+      "followUp": "Weekly counseling sessions",
+      "notes": "Reports nightmares, difficulty sleeping. Witnessed multiple casualties. Follow-up recommended. CPT Williams, Combat Stress, Camp Liberty, Iraq.",
+      "severity": "moderate",
+      "bodySystem": "mental",
+      "linkedChain": "",
+      "isRecurrence": false,
+      "hasGap": false
+    }
+  ],
+  "lastSaved": "2023-11-20T14:30:00.000Z"
+}
