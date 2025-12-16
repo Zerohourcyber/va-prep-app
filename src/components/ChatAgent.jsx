@@ -242,3 +242,6 @@ const ChatAgent = ({ conditions = [], medicalEntries = [], isPremium = false }) 
 
 export default ChatAgent;
 
+
+
+

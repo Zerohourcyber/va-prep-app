@@ -5,7 +5,7 @@ import {
   TrendingUp, Search, Filter, X, Edit2, Trash2, ChevronRight, 
   ChevronDown, Flag, Zap, FileWarning, ClipboardList, BarChart3,
   Stethoscope, Shield, Target, ArrowRight, Info, AlertCircle, Settings, 
-  Sparkles, Key
+  Sparkles, Key, Download
 } from 'lucide-react';
 
 // Body System Categories
@@ -399,6 +399,73 @@ Rules:
 
   const addConditionChain = (name, description) => {
     setConditionChains(prev => [...prev, { id: Date.now(), name, description, entries: [] }]);
+  };
+
+  // Export to CSV
+  const exportToCSV = () => {
+    if (entries.length === 0) {
+      alert('No entries to export');
+      return;
+    }
+
+    // CSV escape function
+    const escapeCSV = (str) => {
+      if (!str) return '';
+      const escaped = String(str).replace(/"/g, '""');
+      return escaped.includes(',') || escaped.includes('"') || escaped.includes('\n') 
+        ? `"${escaped}"` 
+        : escaped;
+    };
+
+    // CSV headers
+    const headers = [
+      'Item Name',
+      'Body System',
+      'Due To / Service Connection',
+      'Date Began/Worsened',
+      'Severity',
+      'Documentation Source',
+      'Treatment',
+      'Follow-up'
+    ];
+
+    // Map entries to CSV rows
+    const rows = entries.map(entry => {
+      const itemName = entry.diagnosis 
+        ? `${entry.issue} - ${entry.diagnosis}` 
+        : entry.issue;
+      
+      const bodySystemName = BODY_SYSTEMS[entry.bodySystem]?.name || entry.bodySystem || 'Other';
+      
+      const serviceConnection = [entry.dutyImpact, entry.notes]
+        .filter(Boolean)
+        .join(' | ');
+
+      return [
+        escapeCSV(itemName),
+        escapeCSV(bodySystemName),
+        escapeCSV(serviceConnection),
+        escapeCSV(formatDate(entry.date)),
+        escapeCSV(entry.severity),
+        escapeCSV(entry.docSource),
+        escapeCSV(entry.treatment),
+        escapeCSV(entry.followUp)
+      ].join(',');
+    });
+
+    // Combine headers and rows
+    const csvContent = [headers.join(','), ...rows].join('\n');
+
+    // Create blob and download
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', `va-medical-history-${new Date().toISOString().split('T')[0]}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   // Views
@@ -1102,10 +1169,19 @@ Rules:
         {/* CLAIMS ANALYSIS VIEW */}
         {activeView === 'claims' && (
           <div className="space-y-6">
-            <h2 className="text-lg font-semibold font-display flex items-center gap-2">
-              <Target className="w-5 h-5 text-emerald-500" />
-              VA Claims Analysis
-            </h2>
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-semibold font-display flex items-center gap-2">
+                <Target className="w-5 h-5 text-emerald-500" />
+                VA Claims Analysis
+              </h2>
+              <button
+                onClick={exportToCSV}
+                className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-lg transition-colors"
+              >
+                <Download className="w-4 h-4" />
+                Export Spreadsheet
+              </button>
+            </div>
 
             {claimsAnalysis.length === 0 ? (
               <div className="text-center py-16 text-slate-500">

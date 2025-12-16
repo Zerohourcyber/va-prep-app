@@ -223,3 +223,6 @@ const Diagnose = () => {
 
 export default Diagnose;
 
+
+
+
