@@ -1,12 +1,13 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { ChevronDown, ChevronRight, Plus, Trash2, AlertTriangle, CheckCircle2, FileText, Calculator, ClipboardList, Shield, Target, AlertCircle, Info, X, Edit2, Save, Download, Upload, FileDown, Activity, Sparkles, LogOut, Crown, Lock } from 'lucide-react';
+import { ChevronDown, ChevronRight, Plus, Trash2, AlertTriangle, CheckCircle2, FileText, Calculator, ClipboardList, Shield, Target, AlertCircle, Info, X, Edit2, Save, Download, Upload, FileDown, Activity, Sparkles, LogOut, Crown, Lock, FilePlus2 } from 'lucide-react';
 import jsPDF from 'jspdf';
 import MedicalHistorySystem from './MedicalHistorySystem';
 import { useAuth } from './components/AuthProvider';
 import { useFeatureLimits, PremiumBadge } from './components/PremiumGate';
 import { redirectToCheckout, isStripeConfigured } from './lib/stripe';
 import ChatAgent from './components/ChatAgent';
+import ShaDbqTab from './components/ShaDbq';
 
 // VA Combined Rating Calculator - Bilateral Factor not included for simplicity
 const calculateVARating = (ratings) => {
@@ -292,6 +293,7 @@ export default function App() {
   const [ratings, setRatings] = useState([]);
   const [veteranName, setVeteranName] = useState('');
   const [medicalEntries, setMedicalEntries] = useState([]);
+  const [shaDbqData, setShaDbqData] = useState(null);
   const [showConditionForm, setShowConditionForm] = useState(false);
   const [editingCondition, setEditingCondition] = useState(null);
   const [showGenerator, setShowGenerator] = useState(false);
@@ -362,6 +364,7 @@ export default function App() {
             if (cloudData.ratings) setRatings(cloudData.ratings);
             if (cloudData.veteran_name) setVeteranName(cloudData.veteran_name);
             if (cloudData.medical_entries) setMedicalEntries(cloudData.medical_entries);
+            if (cloudData.sha_dbq_data) setShaDbqData(cloudData.sha_dbq_data);
             console.log('Loaded data from cloud');
             return;
           }
@@ -382,6 +385,7 @@ export default function App() {
             if (data.activeTab) setActiveTab(data.activeTab);
             if (data.veteranName) setVeteranName(data.veteranName);
             if (data.medicalEntries) setMedicalEntries(data.medicalEntries);
+            if (data.shaDbqData) setShaDbqData(data.shaDbqData);
           }
         }
       } catch (error) {
@@ -404,6 +408,7 @@ export default function App() {
         activeTab,
         veteranName,
         medicalEntries,
+        shaDbqData,
         lastSaved: new Date().toISOString()
       };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
@@ -423,7 +428,8 @@ export default function App() {
             conditions,
             ratings,
             medical_entries: medicalEntries,
-            veteran_name: veteranName
+            veteran_name: veteranName,
+            sha_dbq_data: shaDbqData
           });
         } catch (err) {
           console.error('Failed to save to cloud:', err);
@@ -434,7 +440,7 @@ export default function App() {
       const timeoutId = setTimeout(saveToCloud, 2000);
       return () => clearTimeout(timeoutId);
     }
-  }, [checklist, conditions, ratings, activeTab, veteranName, medicalEntries, user]);
+  }, [checklist, conditions, ratings, activeTab, veteranName, medicalEntries, shaDbqData, user]);
 
   // Export data as JSON file
   const exportData = () => {
@@ -1026,6 +1032,7 @@ Be specific with evidence and cite dates.`
     { id: 'checklist', label: 'Master Checklist', icon: ClipboardList },
     { id: 'conditions', label: 'Conditions', icon: FileText },
     { id: 'medical-history', label: 'Medical History', icon: Activity },
+    { id: 'sha-dbq', label: 'SHA DBQ', icon: FilePlus2 },
     { id: 'calculator', label: 'VA Math', icon: Calculator },
     { id: 'documents', label: 'Document Reqs', icon: Shield },
     { id: 'readiness', label: 'Readiness', icon: Target },
@@ -1527,9 +1534,21 @@ Be specific with evidence and cite dates.`
 
         {/* MEDICAL HISTORY TAB */}
         {activeTab === 'medical-history' && (
-          <MedicalHistorySystem 
+          <MedicalHistorySystem
             entries={medicalEntries}
             setEntries={setMedicalEntries}
+          />
+        )}
+
+        {/* SHA DBQ TAB */}
+        {activeTab === 'sha-dbq' && (
+          <ShaDbqTab
+            shaDbqData={shaDbqData}
+            setShaDbqData={setShaDbqData}
+            medicalEntries={medicalEntries}
+            conditions={conditions}
+            veteranName={veteranName}
+            isPremium={isPremium}
           />
         )}
 
